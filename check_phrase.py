@@ -3,23 +3,19 @@ import re
 
 def get_comparisons_list(list_with_objects):
 
-
     for dict_objects in list_with_objects:
-
         new_phrases = []
-        find_self = re.findall(r'{\w+}', dict_objects['phrase'])
+        find_quotes = re.findall(r'{\w+}', dict_objects['phrase'])
 
-        if find_self:
-
+        if find_quotes:
             phrase = ' '.join([re.sub(r'[{}]', '', word) for word in dict_objects['phrase'].split()])
             new_phrases.append(phrase.lower())
 
             for slot_word in dict_objects['slots']:
-
                 phrase = re.sub(r'{\w+}', slot_word, dict_objects['phrase'])
                 new_phrases.append(phrase.lower())
 
-        if not find_self:
+        if not find_quotes:
             new_phrases.append(dict_objects['phrase'].lower())
 
         phrases = list(set(new_phrases))
@@ -32,7 +28,6 @@ def phrase_search(list_with_objects = list, search_string = str) -> int:
 
     search_str = search_string.lower()
     list_with_objects_update = get_comparisons_list(list_with_objects)
-
 
     for phrases_dict in list_with_objects_update:
 
@@ -59,7 +54,6 @@ def check_objects(object):
 
 if __name__ == "__main__":
 
-
     object = [
         {"id": 1, "phrase": "Hello world!", "slots": []},
         {"id": 2, "phrase": "I wanna {pizza}", "slots": ["pizza", "BBQ", "pasta"]},
@@ -70,7 +64,6 @@ if __name__ == "__main__":
     check =check_objects(object)
 
     if check:
-
         try:
             assert phrase_search(object, 'I wanna pasta') == 2
             assert phrase_search(object, 'Give me your power') == 3
@@ -80,7 +73,6 @@ if __name__ == "__main__":
             assert phrase_search(object, 'Give me your gun') == 4
             assert phrase_search(object, 'I need your clothes, your boots & your motorcycle') == 0
             print(' Test: --- OK')
-
         except AssertionError:
             print('Test --- Error')
     else:

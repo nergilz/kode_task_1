@@ -4,8 +4,7 @@
 
 ### The scrip check the list with dict 
 
-+ проверяет наличие строки поиска в объекте
-+ вернуть id объекта в случае совпадения
++ checks for a string in an object and return the object_ID if a match
 
 
 ### Run
@@ -17,6 +16,9 @@ python3 check_phrase.py
 ### Example output
 ```bash
  Test: --- OK
+```
+```bash
+ Test: --- Error
 ```
 
 ```bash
