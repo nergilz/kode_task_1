@@ -30,19 +30,16 @@ def phrase_search(list_with_objects = list, search_string = str) -> int:
     list_with_objects_update = get_comparisons_list(list_with_objects)
 
     for phrases_dict in list_with_objects_update:
-
         if search_str in phrases_dict['phrases']:
             return phrases_dict['id']
         else:
             res = 0
-
     return res
 
 
 def check_objects(object):
 
     if len(object)>0:
-
         for elem in object:
             if elem["id"]>0 and 0<=len(elem["phrase"])<=120 and 0<=len(elem["slots"])<=50:
                 return True
@@ -60,8 +57,8 @@ if __name__ == "__main__":
         {"id": 3, "phrase": "Give me your power", "slots": ["money", "gun"]},
         {"id": 4, "phrase": "Give me your {self}", "slots": ["money", "gun", "track", "engine"]},
         ]
-
-    check =check_objects(object)
+        
+    check = check_objects(object)
 
     if check:
         try:

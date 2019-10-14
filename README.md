@@ -1,4 +1,4 @@
-## Script for check
+## Script for check object (task 1)
 
 ---
 
@@ -20,7 +20,6 @@ python3 check_phrase.py
 ```bash
  Test: --- Error
 ```
-
 ```bash
 Error, the object cannot be used!
 ```
